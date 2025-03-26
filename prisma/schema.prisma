@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// criar uma migration: yarn prisma migrate dev   e depois para gerar os tipos npx prisma generate
+model User {
+  id_user String @id @default(uuid())
+  name_user String
+  email String
+  password String
+  teacher Boolean
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("users")
+  training Training[]
+}
+
+model Exercise{
+  id_exercise String @id @default(uuid())
+  name_exercise String
+  description_exercise String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("exercise")
+  exerciseOfTraining ExerciseOfTraining[]
+}
+
+model Training{
+  id_training String @id @default(uuid())
+  name_training String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  user User @relation(fields: [created_by], references: [id_user])
+
+  @@map("training")
+  created_by String 
+  exerciseOfTraining ExerciseOfTraining[]
+
+}
+
+model ExerciseOfTraining{
+  id_exerciseoftraining String @id @default(uuid())
+  block Int
+  repeat Int
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  exercise Exercise @relation(fields: [exercise_id], references: [id_exercise])
+  training Training @relation(fields: [training_id], references: [id_training])
+
+  @@map("exercisesoftraining")
+  exercise_id String
+  training_id String
+}
