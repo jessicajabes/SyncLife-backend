@@ -1,0 +1,12 @@
+DB_USUARIO=
+DB_SENHA=
+DB_NOME=
+DB_HOST=
+DB_PORT=
+APIPORT=
+
+
+SECRET_KEY = 
+
+
+DATABASE_URL=postgresql://${DB_USUARIO}:${DB_SENHA}@${DB_HOST}:${DB_PORT}/mydb?schema=${DB_NOME}
