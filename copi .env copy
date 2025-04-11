@@ -1,12 +1,15 @@
-DB_USUARIO=
-DB_SENHA=
-DB_NOME=
-DB_HOST=
-DB_PORT=
-APIPORT=
+DB_USUARIO="jejabes"
+DB_SENHA="123"
+DB_NOME="synclife"
 
+DB_HOST="localhost"
+DB_PORT=
+API_PORT="3333"
+
+#https://www.md5hashgenerator.com/    palavra: 
 
 SECRET_KEY = 
 
 
 DATABASE_URL=postgresql://${DB_USUARIO}:${DB_SENHA}@${DB_HOST}:${DB_PORT}/mydb?schema=${DB_NOME}
+
