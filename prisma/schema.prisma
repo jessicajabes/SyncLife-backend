@@ -58,7 +58,8 @@ model Training{
 model ExerciseOfTraining{
   id_exerciseoftraining String @id @default(uuid())
   block Int
-  repeat Int
+  repeat String
+  description String
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 

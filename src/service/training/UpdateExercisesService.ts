@@ -5,14 +5,15 @@ interface ExerciseOfTraining{
     exercise_id: string,
     training_id: string,
     block: number,
-    repeat: number,
+    repeat: string,
+    description:string,
 }
 
 class UpdateExercisesService{
-    async execute({id_exerciseoftraining, exercise_id, training_id, block, repeat}: ExerciseOfTraining){
+    async execute({id_exerciseoftraining, exercise_id, training_id, block, repeat, description}: ExerciseOfTraining){
         const training = prismaClient.exerciseOfTraining.update({
             where:({id_exerciseoftraining:id_exerciseoftraining}),
-            data:({exercise_id:exercise_id, training_id:training_id, block:block, repeat:repeat}),
+            data:({exercise_id:exercise_id, training_id:training_id, block:block, repeat:repeat, description:description}),
         })
         return training;
     }
